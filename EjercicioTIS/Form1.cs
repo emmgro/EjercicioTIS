@@ -17,7 +17,7 @@ namespace EjercicioTIS
         {
             InitializeComponent();
             fill_listbox();
-            //boldDays();
+            boldDays();
         }
 
         void fill_listbox() { 
@@ -46,14 +46,40 @@ namespace EjercicioTIS
 
         public void boldDays()
         {
-            List<DateTime> listaFechas = new List<DateTime>();
-            for (DateTime m = monthCalendar1.SelectionRange.Start; m <= monthCalendar1.SelectionRange.End; m = m.AddDays(1))
+            string connString = "datasource=localhost;port=3306;username=root;password=";
+            string Query = "SELECT concat(fecha) FROM agenda.clientes";
+            MySqlConnection conDataBase = new MySqlConnection(connString);
+            MySqlCommand cmdDatabase = new MySqlCommand(Query, conDataBase);
+            MySqlDataAdapter DataAdapter = new MySqlDataAdapter(Query, conDataBase);
+            MySqlDataReader myReader;
+            conDataBase.Open();
+
+            DataSet ds = new DataSet();
+            DataAdapter.Fill(ds, "agenda.clientes");
+
+            int tam_arr = ds.Tables[0].Rows.Count; //Obteniendo el tamano del arreglo
+            int i = 0;
+            string[] arr = new string[tam_arr];
+
+            foreach (DataRow dr in ds.Tables[0].Rows) //Recorriendo las filas
             {
-                listaFechas.Add(DateTime.Parse(m.ToLongDateString()));
+                arr[i] = dr[0] + "";
+                i++;
             }
 
-            listaFechas.AddRange(monthCalendar1.BoldedDates);
-            monthCalendar1.BoldedDates = listaFechas.ToArray();
+            DateTime[] fechasMarcadas = new DateTime[arr.Length];
+
+            for (i = 0; i < arr.Length; i++)
+            {
+                int ano, mes, dia;
+                ano = Int32.Parse(arr[i].Substring(0, 4));
+                mes = Int32.Parse(arr[i].Substring(5, 2));
+                dia = Int32.Parse(arr[i].Substring(8, 2));
+
+                fechasMarcadas[i] = new DateTime(ano, mes, dia);
+            }
+
+            monthCalendar1.BoldedDates = fechasMarcadas;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -119,101 +145,6 @@ namespace EjercicioTIS
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            string connString = "datasource=localhost;port=3306;username=root;password=";
-            string Query = "SELECT fecha FROM agenda.clientes";
-            MySqlConnection conDataBase = new MySqlConnection(connString);
-            MySqlCommand cmdDatabase = new MySqlCommand(Query, conDataBase);
-            MySqlDataAdapter DataAdapter = new MySqlDataAdapter(Query, conDataBase);
-            MySqlDataReader myReader;
-            conDataBase.Open();
-
-            DataSet ds = new DataSet();
-            DataAdapter.Fill(ds, "agenda.clientes");
-            
-            //for (int j = 0; j <= ds.Tables[0].Rows.Count - 1; j++) {
-
-
-                
-            //    List<DateTime> listaFechas = new List<DateTime>();
-
-
-            //    for(DateTime evalFecha = fechaMarcada; evalFecha = evalFecha.AddDays(1.0)){}
-
-            //    this.monthCalendar1.BoldedDates = (arr.to);
-            //}
-
-
-
-            int tam_arr = ds.Tables[0].Rows.Count; //Obteniendo el tamano del arreglo
-            int i = 0;
-            string[] arr = new string[tam_arr];
-            
-
-
-            foreach (DataRow dr in ds.Tables[0].Rows) //Recorriendo las filas
-            {
-                arr[i] = dr["fecha"].ToString();
-                i++;
-            }
-
-            List<string> listaFechas = new List<string>(arr);
-            MessageBox.Show(listaFechas);
-
-
-
-
-
-
-
-            
-            //    foreach(string item in arr){
-            //        MessageBox.Show(item);
-            //        DateTime fechaMarcada = DateTime.Parse(item);
-            //        DateTime[] fechasMarcadas = new DateTime[arr.Length];
-
-            //        for (int j = 0; j <= arr.Length; j++ ){
-            //            monthCalendar1.BoldedDates = new DateTime[]{
-            //                DateTime.Today.AddDays(fechaMarcada)
-            //            };
-            //        }
-            //        //this.monthCalendar1.AddBoldedDate(fechaMarcada);
-            //}
-
-
-            //for (int j = 0; j <= arr.Length; j++)
-            //{
-            //    string agendado = (ds.Tables[0].Rows[j].ItemArray[3].ToString());
-            //    DateTime fechaMarcada = DateTime.Parse(agendado);
-            //    this.monthCalendar1.AddBoldedDate(fechaMarcada);
-            //}
-
-
-
-
-
-            //myReader = cmdDatabase.ExecuteReader();
-
-            //// arreglo
-
-            //while (myReader.Read())
-            //{
-            //    String fecha = myReader[0] + "";
-
-            //    int ano, mes, dia;
-            //    ano = Int32.Parse(fecha.Substring(0, 4));
-            //    mes = Int32.Parse(fecha.Substring(5, 2));
-            //    dia = Int32.Parse(fecha.Substring(8, 2));
-            //    //arreglo.Add();
-
-            //}
-            //this.monthCalendar1.BoldedDates = new System.DateTime[] { new System.DateTime(ano, mes, dia) };
-
-
-            
-            
-
-
         }
     }
 }
