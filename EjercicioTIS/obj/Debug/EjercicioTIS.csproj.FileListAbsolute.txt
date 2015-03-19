@@ -1,0 +1,10 @@
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\bin\Debug\EjercicioTIS.exe.config
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\bin\Debug\EjercicioTIS.exe
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\bin\Debug\EjercicioTIS.pdb
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.csprojResolveAssemblyReference.cache
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.Form1.resources
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.Properties.Resources.resources
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.csproj.GenerateResource.Cache
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.exe
+c:\users\emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\obj\Debug\EjercicioTIS.pdb
+C:\Users\Emmanuelle\documents\visual studio 2013\Projects\EjercicioTIS\EjercicioTIS\bin\Debug\MySql.Data.dll
