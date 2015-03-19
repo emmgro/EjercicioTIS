@@ -158,7 +158,7 @@ namespace EjercicioTIS
             }
 
             List<string> listaFechas = new List<string>(arr);
-            Console.WriteLine(listaFechas);
+            MessageBox.Show(listaFechas);
 
 
 
